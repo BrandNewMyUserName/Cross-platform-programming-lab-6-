@@ -12,23 +12,23 @@ describe('Seed', () => {
   });
 
   it('should throw an error if plantType is empty', () => {
-    expect(() => new Seed(1, 'Sunflower Seeds', 5.99, 'Ukraine', '')).toThrow('Тип рослини не може бути порожнім.');
-    expect(() => new Seed(1, 'Sunflower Seeds', 5.99, 'Ukraine', '   ')).toThrow('Тип рослини не може бути порожнім.');
+    expect(() => new Seed(1, 'Sunflower Seeds', 5.99, 'Ukraine', '')).toThrow(new Error('Тип рослини не може бути порожнім.'));
+    expect(() => new Seed(1, 'Sunflower Seeds', 5.99, 'Ukraine', '   ')).toThrow(new Error('Тип рослини не може бути порожнім.'));
   });
 
   it('should throw an error if id is not a positive integer', () => {
-    expect(() => new Seed(-1, 'Sunflower Seeds', 5.99, 'Ukraine', 'Sunflower')).toThrow('ID має бути додатнім цілим числом.');
+    expect(() => new Seed(-1, 'Sunflower Seeds', 5.99, 'Ukraine', 'Sunflower')).toThrow(new Error('ID має бути додатнім цілим числом.'));
   });
 
   it('should throw an error if name is empty', () => {
-    expect(() => new Seed(1, '', 5.99, 'Ukraine', 'Sunflower')).toThrow('Назва товару не може бути порожньою.');
+    expect(() => new Seed(1, '', 5.99, 'Ukraine', 'Sunflower')).toThrow(new Error('Назва товару не може бути порожньою.'));
   });
 
   it('should throw an error if price is not a positive number', () => {
-    expect(() => new Seed(1, 'Sunflower Seeds', -5.99, 'Ukraine', 'Sunflower')).toThrow('Ціна має бути додатнім числом.');
+    expect(() => new Seed(1, 'Sunflower Seeds', -5.99, 'Ukraine', 'Sunflower')).toThrow(new Error('Ціна має бути додатнім числом.'));
   });
 
   it('should throw an error if country is empty', () => {
-    expect(() => new Seed(1, 'Sunflower Seeds', 5.99, '', 'Sunflower')).toThrow('Країна виробника не може бути порожньою.');
+    expect(() => new Seed(1, 'Sunflower Seeds', 5.99, '', 'Sunflower')).toThrow(new Error('Країна виробника не може бути порожньою.'));
   });
 });

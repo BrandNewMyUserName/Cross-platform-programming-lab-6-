@@ -12,23 +12,23 @@ describe('Shovel', () => {
   });
 
   it('should throw an error if material is empty', () => {
-    expect(() => new Shovel(1, 'Steel Dig Pro', 29.99, 'China', '')).toThrow('Матеріал лопати не може бути порожнім.');
-    expect(() => new Shovel(1, 'Steel Dig Pro', 29.99, 'China', '   ')).toThrow('Матеріал лопати не може бути порожнім.');
+    expect(() => new Shovel(1, 'Steel Dig Pro', 29.99, 'China', '')).toThrow(new Error('Матеріал лопати не може бути порожнім.'));
+    expect(() => new Shovel(1, 'Steel Dig Pro', 29.99, 'China', '   ')).toThrow(new Error('Матеріал лопати не може бути порожнім.'));
   });
 
   it('should throw an error if id is not a positive integer', () => {
-    expect(() => new Shovel(-1, 'Steel Dig Pro', 29.99, 'China', 'Steel')).toThrow('ID має бути додатнім цілим числом.');
+    expect(() => new Shovel(-1, 'Steel Dig Pro', 29.99, 'China', 'Steel')).toThrow(new Error('ID має бути додатнім цілим числом.'));
   });
 
   it('should throw an error if name is empty', () => {
-    expect(() => new Shovel(1, '', 29.99, 'China', 'Steel')).toThrow('Назва товару не може бути порожньою.');
+    expect(() => new Shovel(1, '', 29.99, 'China', 'Steel')).toThrow(new Error('Назва товару не може бути порожньою.'));
   });
 
   it('should throw an error if price is not a positive number', () => {
-    expect(() => new Shovel(1, 'Steel Dig Pro', -29.99, 'China', 'Steel')).toThrow('Ціна має бути додатнім числом.');
+    expect(() => new Shovel(1, 'Steel Dig Pro', -29.99, 'China', 'Steel')).toThrow(new Error('Ціна має бути додатнім числом.'));
   });
 
   it('should throw an error if country is empty', () => {
-    expect(() => new Shovel(1, 'Steel Dig Pro', 29.99, '', 'Steel')).toThrow('Країна виробника не може бути порожньою.');
+    expect(() => new Shovel(1, 'Steel Dig Pro', 29.99, '', 'Steel')).toThrow(new Error('Країна виробника не може бути порожньою.'));
   });
 });

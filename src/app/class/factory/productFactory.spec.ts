@@ -36,6 +36,6 @@ describe('ProductFactory', () => {
 
   it('should throw an error for unknown product type', () => {
     const data = { productType: 'Unknown', id: 1, name: 'Test', price: 10, country: 'Test' };
-    expect(() => ProductFactory.createProduct(data)).toThrow('Невідомий тип продукту');
+    expect(() => ProductFactory.createProduct(data)).toThrow(new Error('Невідомий тип продукту'));
   });
 });
