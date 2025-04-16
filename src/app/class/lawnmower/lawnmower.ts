@@ -23,6 +23,6 @@ export class Lawnmower extends BaseProduct {
   }
 
   getType(): string {
-    return "Газонокосарка";
+    return "Lawnmower";
   }
 }

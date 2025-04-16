@@ -23,6 +23,6 @@ export class Seed extends BaseProduct {
   }
 
   getType(): string {
-    return "Насіння";
+    return "Seeds";
   }
 }

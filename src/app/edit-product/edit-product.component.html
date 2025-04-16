@@ -1,0 +1,128 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <ion-card class="course-card">
+    <ion-card-header class="cheader">
+      <ion-card-title>Редагувати продукт</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="body">
+      <ion-item>
+        <ion-input
+          label="Назва"
+          formControlName="name"
+          labelPlacement="floating"
+          class="custom"
+          [value]="product.getName()">
+        </ion-input>
+        <ion-text color="danger" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+          Назва має містити лише літери та бути довжиною від 2 символів
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Вартість (грн)"
+          formControlName="price"
+          type="number"
+          labelPlacement="floating"
+          class="custom"
+          [value]="product.getPrice()">
+        </ion-input>
+        <ion-text color="danger" *ngIf="productForm.get('price')?.hasError('required') && productForm.get('price')?.touched">
+          Ціна обов'язкова
+        </ion-text>
+        <ion-text color="danger" *ngIf="productForm.get('price')?.hasError('min') && productForm.get('price')?.touched">
+          Ціна має бути більше 0.01
+        </ion-text>
+        <ion-text color="danger" *ngIf="productForm.get('price')?.hasError('maxPrice') && productForm.get('price')?.touched">
+          Ціна не може перевищувати 1000
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Країна"
+          formControlName="country"
+          type="string"
+          labelPlacement="floating"
+          class="custom"
+          [value]="product.getCountry()">
+        </ion-input>
+        <ion-text color="danger" *ngIf="productForm.get('country')?.hasError('required') && productForm.get('country')?.touched">
+          Країна обов'язкова
+        </ion-text>
+        <ion-text color="danger" *ngIf="productForm.get('country')?.hasError('invalidCountry') && productForm.get('country')?.touched">
+          Некоректна країна
+        </ion-text>
+      </ion-item>
+
+      <fieldset *ngIf="product.getType() === types[0]">
+        <ion-item>
+          <ion-input
+            label="Матеріал"
+            formControlName="material"
+            labelPlacement="floating"
+            class="custom">
+          </ion-input>
+          <ion-text color="danger" *ngIf="productForm.get('material')?.hasError('required') && productForm.get('material')?.touched">
+            Матеріал обов'язковий
+          </ion-text>
+          <ion-text color="danger" *ngIf="productForm.get('material')?.hasError('invalidMaterial') && productForm.get('material')?.touched">
+            Некоректний матеріал
+          </ion-text>
+        </ion-item>
+      </fieldset>
+
+      <fieldset *ngIf="product.getType() === types[1]">
+        <ion-item>
+          <ion-input
+            label="Ширина зрізу (см)"
+            timestep="1"
+            formControlName="cuttingWidth"
+            type="number"
+            labelPlacement="floating"
+            class="custom">
+          </ion-input>
+          <ion-text color="danger" *ngIf="productForm.get('cuttingWidth')?.invalid && productForm.get('cuttingWidth')?.touched">
+            Ширина зрізу має бути додатнім цілим числом
+          </ion-text>
+        </ion-item>
+      </fieldset>
+
+      <fieldset *ngIf="product.getType() === types[2]">
+        <ion-item>
+          <ion-input
+            label="Тип рослини"
+            formControlName="plantType"
+            labelPlacement="floating"
+            class="custom">
+          </ion-input>
+          <ion-text color="danger" *ngIf="productForm.get('plantType')?.invalid && productForm.get('plantType')?.touched">
+            Тип рослини має містити лише літери та бути довжиною від 3 символів
+          </ion-text>
+        </ion-item>
+      </fieldset>
+
+      <fieldset *ngIf="product.getType() === types[3]">
+        <ion-item>
+          <ion-input
+            label="Площа покриття (м²)"
+            timestep="1"
+            formControlName="coverageArea"
+            type="number"
+            labelPlacement="floating"
+            class="custom">
+          </ion-input>
+          <ion-text color="danger" *ngIf="productForm.get('coverageArea')?.invalid && productForm.get('coverageArea')?.touched">
+            Площа покриття має бути додатнім цілим числом
+          </ion-text>
+        </ion-item>
+      </fieldset>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    type="submit"
+    (click)="onSubmit()"
+    [disabled]="productForm.invalid">
+    Submit
+  </ion-button>
+</form>

@@ -23,7 +23,7 @@ export class Shovel extends BaseProduct {
     }
   
     getType(): string {
-      return "Лопата";
+      return "Shovel";
     }
   }
   

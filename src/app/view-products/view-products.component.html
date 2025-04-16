@@ -1,4 +1,6 @@
-<ion-card *ngFor="let product of products; let i = index" class="course-card">
+<ion-button color="primary" (click)="addFormShow()">Додати продукт</ion-button>
+<app-add-product *ngIf="showAddForm" (productAdd)="addProduct($event)"></app-add-product>
+<ion-card *ngFor="let product of readService.products; let i = index" class="course-card">
   <ion-card-header class="cheader">
     <ion-card-title>{{ product.getName() }}</ion-card-title>
     <ion-card-subtitle>{{ product.getType() }}</ion-card-subtitle>
@@ -13,6 +15,12 @@
     <ion-item>
       <ion-label>Країна: {{ product.getCountry() }}</ion-label>
     </ion-item>
-    <ion-button color="danger" (click)="removeProduct(i)">Видалити</ion-button>
+    <ion-button color="warning" (click)="editFormShow(i)">Редагувати</ion-button>
+    <app-edit-product
+      *ngIf="showEditForm && i == editFormnumber"
+      (productEdit)="editProduct($event, i)"
+      [product]="readService.products[i]">
+    </app-edit-product>
+    <ion-button color="danger" (click)="deleteProduct(i)">Видалити</ion-button>
   </ion-card-content>
 </ion-card>

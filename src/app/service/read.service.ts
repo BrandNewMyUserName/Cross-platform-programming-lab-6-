@@ -1,42 +1,46 @@
-import { ProductFactory } from '../class/factory/productFactory';
 import { Injectable } from '@angular/core';
 import { iProduct } from '../class/interfaces/iProduct';
+import { ProductFactory } from '../class/factory/productFactory';
 
+const URL = "https://api.jsonbin.io/v3/b/67fed4b58a456b79668a30c3";
 
-const URL ="https://api.jsonbin.io/v3/b/67fed4b58a456b79668a30c3";
 @Injectable({
   providedIn: 'root'
 })
 export class ReadService {
-  data:any;
-  public antiques: iProduct[]=[]; 
+  data: any;
+  public products: iProduct[] = [];
 
-  addAntiques(some_antiques:iProduct){
-    this.antiques.push(some_antiques);
+  addProduct(product: iProduct) {
+    this.products.push(product);
   }
 
-  removeAntique(index: number) {
-    if (index >= 0 && index < this.antiques.length) {
-      this.antiques.splice(index, 1);
+  removeProduct(index: number) {
+    if (index >= 0 && index < this.products.length) {
+      this.products.splice(index, 1);
     }
   }
 
-  
-  public async load(){
-    this.data=[];
-    fetch(URL).then((res)=>res.json())
-    .then((json)=>{
-
-      this.data=json;
-      this.data=this.data.record;
-
-      let antiques = this.data.map((item:any)=>ProductFactory.createProduct(item));
-
-      antiques.forEach((element:any) => this.addAntiques(element));
-        
-    });
-
+  updateProduct(index: number, updatedProduct: iProduct) {
+    if (index >= 0 && index < this.products.length) {
+      this.products[index] = updatedProduct;
+    }
   }
 
-  constructor() { }
+  public async load() {
+    this.data = [];
+    try {
+      const res = await fetch(URL);
+      const json = await res.json();
+      this.data = json.record;
+
+      const products = this.data.map((item: any) => ProductFactory.createProduct(item));
+      products.forEach((element: iProduct) => this.addProduct(element));
+    } catch (error) {
+      console.error('Помилка при завантаженні даних:', error);
+    }
+  }
+
+  constructor() {}
+  
 }
