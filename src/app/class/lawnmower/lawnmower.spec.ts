@@ -8,7 +8,7 @@ describe('Lawnmower', () => {
     expect(lawnmower.getPrice()).toBe(199.99);
     expect(lawnmower.getCountry()).toBe('Germany');
     expect(lawnmower.getDetails()).toEqual(['Ширина зрізу: 45 см']);
-    expect(lawnmower.getType()).toBe('Газонокосарка');
+    expect(lawnmower.getType()).toBe('Lawnmower');
   });
 
   it('should throw an error if cuttingWidth is not a positive number', () => {

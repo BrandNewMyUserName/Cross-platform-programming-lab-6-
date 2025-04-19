@@ -7,7 +7,7 @@ describe('IrrigationSystem', () => {
     expect(irrigationSystem.getPrice()).toBe(89.99);
     expect(irrigationSystem.getCountry()).toBe('USA');
     expect(irrigationSystem.getDetails()).toEqual(['Покриття: 100 м²']);
-    expect(irrigationSystem.getType()).toBe('Поливальна система');
+    expect(irrigationSystem.getType()).toBe('IrrigationSystem');
   });
 
   it('should throw an error if coverageArea is not a positive number', () => {

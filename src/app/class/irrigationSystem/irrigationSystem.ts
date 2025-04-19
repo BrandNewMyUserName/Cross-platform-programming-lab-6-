@@ -23,6 +23,6 @@ export class IrrigationSystem extends BaseProduct {
   }
 
   getType(): string {
-    return "Irrigation System";
+    return "IrrigationSystem";
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { MyHeaderComponent } from '../my-header/my-header.component';
-import { ViewProductsComponent } from '../view-products/view-products.component';
+import { MyHeaderComponent } from '../components/my-header/my-header.component';
+import { ViewProductsComponent } from '../components/view-products/view-products.component';
 
 @Component({
   selector: 'app-home',

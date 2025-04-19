@@ -8,7 +8,7 @@ describe('Shovel', () => {
     expect(shovel.getPrice()).toBe(29.99);
     expect(shovel.getCountry()).toBe('China');
     expect(shovel.getDetails()).toEqual(['Матеріал: Stainless Steel']);
-    expect(shovel.getType()).toBe('Лопата');
+    expect(shovel.getType()).toBe('Shovel');
   });
 
   it('should throw an error if material is empty', () => {

@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true">
+  <app-my-header name="Лабораторна робота №8"></app-my-header>
+  
+  <!-- Category Dropdown -->
+  <ion-item>
+    <ion-label>Виберіть категорію:</ion-label>
+    <ion-select [(ngModel)]="selectedType" (ionChange)="onTypeChange()">
+      <ion-select-option *ngFor="let type of productTypesReading" [value]="type">{{ type }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Поточна категорія: {{ selectedType }}</ion-label>
+  </ion-item>
+
+  <!-- Button to Open Filter Modal -->
+  <ion-button expand="block" (click)="openFilterModal()">Відкрити фільтри</ion-button>
+
+  <!-- Filter Modal -->
+  <ion-modal #filterModal [isOpen]="isFilterModalOpen" (didDismiss)="isFilterModalOpen = false">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Фільтри</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeFilterModal()">Закрити</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item>
+          <ion-label position="floating">Країна</ion-label>
+          <ion-input [(ngModel)]="countryFilter" placeholder="Введіть країну (наприклад, USA)"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Мінімальна ціна (USD)</ion-label>
+          <ion-input type="number" [(ngModel)]="minPriceFilter" placeholder="0"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Максимальна ціна (USD)</ion-label>
+          <ion-input type="number" [(ngModel)]="maxPriceFilter" placeholder="1000"></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="applyFilters()">Застосувати фільтри</ion-button>
+        <ion-button expand="block" color="light" (click)="clearFilters()">Очистити фільтри</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Product Cards -->
+  <ion-card *ngFor="let product of productService.searchProduct" class="course-card">
+    <ion-card-header class="cheader">
+      <ion-card-title>{{ product.getName() }}</ion-card-title>
+      <ion-card-subtitle>{{ product.getType() }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="cbody">
+      <ion-item *ngFor="let detail of product.getDetails()">
+        <ion-label>{{ detail }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ціна: {{ product.getPrice() }} USD</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Країна: {{ product.getCountry() }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

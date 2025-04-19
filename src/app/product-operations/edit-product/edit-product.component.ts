@@ -2,13 +2,13 @@ import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonCard, IonInput, IonCardTitle, IonCardHeader, IonItem, IonCardContent, IonLabel, IonButton, IonText } from '@ionic/angular/standalone';
-import { ProductFactory } from '../class/factory/productFactory';
-import { iProduct } from '../class/interfaces/iProduct';
-import { productType } from '../class/ProductType';
-import { formConstructor } from '../forms/formsConstructor';
-import { CountryValidatorService } from '../validators/country-validator-service.service';
-import { MaterialValidatorService } from '../validators/material-validator-service.service';
-import { PriceValidatorService } from '../validators/price-validator-service.service';
+import { ProductFactory } from '../../class/factory/productFactory';
+import { iProduct } from '../../class/interfaces/iProduct';
+import { productType } from '../../class/ProductType';
+import { formConstructor } from '../../service/validators/forms/formsConstructor';
+import { CountryValidatorService } from '../../service/validators/country/country-validator-service.service';
+import { MaterialValidatorService } from '../../service/validators/material/material-validator-service.service';
+import { PriceValidatorService } from '../../service/validators/price/price-validator-service.service';
 
 
 @Component({
@@ -52,13 +52,14 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.productForm = this.fb.group({
       name: [
         this.product.getName(),
         [
           Validators.required,
           Validators.minLength(2),
-          Validators.pattern(/^[A-Za-z\s]+$/)
+          Validators.pattern(/^[A-Za-z0-9\s]+$/)
         ]
       ],
       price: [
@@ -66,7 +67,6 @@ export class EditProductComponent implements OnInit {
         [
           Validators.required,
           Validators.min(0.01),
-          // Спрощуємо валідатор, щоб уникнути проблем із форматом
           this.priceValidator.maxPriceValidator()
         ]
       ],
@@ -80,7 +80,6 @@ export class EditProductComponent implements OnInit {
         ]
       ]
     });
-
     formConstructor(
       this.product.getType(),
       this.productForm,

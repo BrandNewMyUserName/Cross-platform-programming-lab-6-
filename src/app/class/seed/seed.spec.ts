@@ -8,7 +8,7 @@ describe('Seed', () => {
     expect(seed.getPrice()).toBe(5.99);
     expect(seed.getCountry()).toBe('Ukraine');
     expect(seed.getDetails()).toEqual(['Тип рослини: Sunflower']);
-    expect(seed.getType()).toBe('Насіння');
+    expect(seed.getType()).toBe('Seed');
   });
 
   it('should throw an error if plantType is empty', () => {

@@ -10,4 +10,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'filter-products',
+    loadComponent: () => import('./components/filter-products/filter-products.component').then( m => m.FilterProductsComponent)
+  },
 ];

@@ -1,29 +1,36 @@
+import { ProductType } from '../../class/ProductType';
+import { ConfigService } from '../../service/config/config.service';
 import { Component, OnInit } from '@angular/core';
-import { ReadService } from '../service/read.service';
-import { iProduct } from '../class/interfaces/iProduct';
-import { IonCard, IonButton, IonCardHeader, IonItem, IonCardContent, IonCardSubtitle, IonCardTitle, IonLabel, IonText } from "@ionic/angular/standalone";
+import { ReadService } from '../../service/read/read.service';
+import { iProduct } from '../../class/interfaces/iProduct';
+import { IonCard, IonButton, IonCardHeader, IonItem, IonCardContent, IonCardSubtitle, IonCardTitle, IonLabel, IonContent } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
-import { EditProductComponent } from '../edit-product/edit-product.component';
-import { AddProductComponent } from '../add-product/add-product.component';
+import { EditProductComponent } from '../../product-operations/edit-product/edit-product.component';
+import { AddProductComponent } from '../../product-operations/add-product/add-product.component';
+import { productType } from '../../class/ProductType';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-view-products',
   standalone: true,
-  imports: [
+  imports: [IonContent, 
     IonLabel, IonCardTitle, IonCard, IonButton, IonCardHeader, IonItem,
-    IonCardContent, IonCardSubtitle, IonText, CommonModule,
+    IonCardContent, IonCardSubtitle, CommonModule,
     AddProductComponent, EditProductComponent
   ],
   templateUrl: './view-products.component.html',
   styleUrls: ['./view-products.component.scss'],
 })
 export class ViewProductsComponent implements OnInit {
-  constructor(public readService: ReadService) {} // Залишаємо readService публічним
+
+  constructor(public readService: ReadService) {} 
+
 
   async ngOnInit(): Promise<void> {
     try {
       await this.readService.load();
       console.log('Продукти ініціалізовані:', this.readService.products);
+      
     } catch (error) {
       console.error('Помилка при ініціалізації компонента:', error);
     }
@@ -57,4 +64,5 @@ export class ViewProductsComponent implements OnInit {
     console.log('Видалено продукт за індексом:', i);
     this.readService.removeProduct(i);
   }
+
 }

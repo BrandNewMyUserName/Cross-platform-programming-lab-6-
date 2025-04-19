@@ -13,7 +13,7 @@
           [value]="product.getName()">
         </ion-input>
         <ion-text color="danger" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
-          Назва має містити лише літери та бути довжиною від 2 символів
+          Назва повинна містити щонаменше 2 символи
         </ion-text>
       </ion-item>
 

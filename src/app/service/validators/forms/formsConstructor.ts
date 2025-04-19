@@ -1,8 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { productType } from '../class/ProductType';
-import { CountryValidatorService } from '../validators/country-validator-service.service';
-import { MaterialValidatorService } from '../validators/material-validator-service.service';
-import { PriceValidatorService } from '../validators/price-validator-service.service';
+import { productType } from '../../../class/ProductType';
+import { CountryValidatorService } from '../country/country-validator-service.service';
+import { MaterialValidatorService } from '../material/material-validator-service.service';
+import { PriceValidatorService } from '../price/price-validator-service.service';
 
 
 export function formConstructor(
@@ -26,7 +26,7 @@ export function formConstructor(
       Validators.required,
       Validators.minLength(3),
       Validators.pattern(/^[A-Za-z\s]+$/),
-      materialValidator.allowedMaterialValidator()
+      materialValidator.allowedMaterialValidator(),
     ]));
   } else if (type === productType[1]) { // Lawnmower
     productForm.addControl('cuttingWidth', fb.control('', [

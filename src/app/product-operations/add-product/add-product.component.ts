@@ -2,13 +2,13 @@ import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonCard, IonInput, IonCardTitle, IonCardHeader, IonItem, IonCardContent, IonSegment, IonSegmentButton, IonSegmentContent, IonSegmentView, IonLabel, IonButton, IonText } from '@ionic/angular/standalone';
-import { ProductFactory } from '../class/factory/productFactory';
-import { ProductType, productType } from '../class/ProductType';
-import { formConstructor } from '../forms/formsConstructor';
-import { CountryValidatorService } from '../validators/country-validator-service.service';
-import { MaterialValidatorService } from '../validators/material-validator-service.service';
-import { PriceValidatorService } from '../validators/price-validator-service.service';
-import { BaseProduct } from '../class/baseProduct';
+import { ProductFactory } from '../../class/factory/productFactory';
+import { ProductType, productType } from '../../class/ProductType';
+import { formConstructor } from '../../service/validators/forms/formsConstructor';
+import { CountryValidatorService } from '../../service/validators/country/country-validator-service.service';
+import { MaterialValidatorService } from '../../service/validators/material/material-validator-service.service';
+import { PriceValidatorService } from '../../service/validators/price/price-validator-service.service';
+import { BaseProduct } from '../../class/baseProduct';
 
 @Component({
   selector: 'app-add-product',
@@ -38,7 +38,7 @@ export class AddProductComponent implements OnInit {
       name: ['', [
         Validators.required,
         Validators.minLength(2),
-        Validators.pattern(/^[A-Za-z\s]+$/)
+        Validators.pattern(/^[A-Za-z0-9\s]+$/)
       ]],
       price: ['', [
         Validators.required,
