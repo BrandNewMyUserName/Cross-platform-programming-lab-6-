@@ -1,0 +1,68 @@
+{
+    "products":{
+        "product1": {
+            "productType": "Lawnmower",
+            "id": 1,
+            "name": "Eco Mower 3000",
+            "price": 199.99,
+            "country": "Germany",
+            "cuttingWidth": 45
+        },
+        "product2": {
+            "productType": "Shovel",
+            "id": 2,
+            "name": "Steel Dig Pro",
+            "price": 29.99,
+            "country": "China",
+            "material": "Stainless Steel"
+        },
+        "product3": {
+            "productType": "Seed",
+            "id": 3,
+            "name": "Sunflower Seeds",
+            "price": 5.99,
+            "country": "Ukraine",
+            "plantType": "Sunflower"
+        },
+        "product4": {
+            "productType": "IrrigationSystem",
+            "id": 4,
+            "name": "SmartSprinkler 500",
+            "price": 89.99,
+            "country": "USA",
+            "coverageArea": 100
+        },
+        "product5": {
+            "productType": "Lawnmower",
+            "id": 5,
+            "name": "GreenCut Ultra",
+            "price": 249.99,
+            "country": "Japan",
+            "cuttingWidth": 50
+        },
+        "product6": {
+            "productType": "Shovel",
+            "id": 6,
+            "name": "Garden Spade",
+            "price": 19.99,
+            "country": "Poland",
+            "material": "Carbon Steel"
+        },
+        "product7": {
+            "productType": "Seed",
+            "id": 7,
+            "name": "Tomato Seeds",
+            "price": 3.99,
+            "country": "Italy",
+            "plantType": "Tomato"
+        },
+        "product8": {
+            "productType": "IrrigationSystem",
+            "id": 8,
+            "name": "DripMaster 200",
+            "price": 59.99,
+            "country": "Australia",
+            "coverageArea": 75
+        }
+    }
+}
