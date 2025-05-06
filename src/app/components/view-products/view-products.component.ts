@@ -7,8 +7,7 @@ import { IonCard, IonButton, IonCardHeader, IonItem, IonCardContent, IonCardSubt
 import { CommonModule } from '@angular/common';
 import { EditProductComponent } from '../../product-operations/edit-product/edit-product.component';
 import { AddProductComponent } from '../../product-operations/add-product/add-product.component';
-import { productType } from '../../class/ProductType';
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-view-products',
@@ -66,3 +65,43 @@ export class ViewProductsComponent implements OnInit {
   }
 
 }
+
+// export class ViewProductsComponent implements OnInit {
+
+//   //!!Лабораторна робота №9
+//     products: iProduct[] = [];
+//     showAddForm = false;
+  
+//     addFormShow() {
+//       this.showAddForm = true;
+//     }
+  
+//     addProduct($event: any) {
+//       this.readService.addProduct($event);
+//       this.showAddForm = false;
+//     }
+  
+//     showEditForm = false;
+//     editFormnumber = 0;
+  
+//     editFormShow(i: number) {
+//       this.showEditForm = true;
+//       this.editFormnumber = i;
+//     }
+  
+//     editProduct($event: any, i: number) {
+//       this.readService.editProduct($event);
+//       this.showEditForm = false;
+//     }
+  
+//     constructor(public readService: ReadService) {}
+  
+//     ngOnInit(): void {
+//       this.readService.products$.subscribe((products) => {
+//         this.products = products;
+//       });
+  
+//       this.readService.fetchProducts();
+//     }
+//   }
+  

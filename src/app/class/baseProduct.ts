@@ -11,9 +11,10 @@ export abstract class BaseProduct implements iProduct {
   }
 
   private validate(): void {
-    if (!Number.isInteger(this.id) || this.id <= 0) {
-      throw new Error("ID має бути додатнім цілим числом.");
-    }
+    // In Firebase ids have string format 
+    // if (!Number.isInteger(this.id) || this.id <= 0) {
+    //   throw new Error("ID має бути додатнім цілим числом.");
+    // }
 
     if (typeof this.name !== "string" || this.name.trim() === "") {
       throw new Error("Назва товару не може бути порожньою.");

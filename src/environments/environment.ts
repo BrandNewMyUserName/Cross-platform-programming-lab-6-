@@ -4,17 +4,18 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
-    apiKey: "AIzaSyBUhGKkbZBG3qqdoaLdSpt8pquvloub2xI",
-    authDomain: "cross-platform-labwork9.firebaseapp.com",
-    databaseURL: "https://cross-platform-labwork9-default-rtdb.firebaseio.com",
-    projectId: "cross-platform-labwork9",
-    storageBucket: "cross-platform-labwork9.firebasestorage.app",
-    messagingSenderId: "781703993153",
-    appId: "1:781703993153:web:edba69015c2fa04f03f3c0",
-    measurementId: "G-9ZZ4TXD2Z0"
+  firebaseConfig : {
+    apiKey: "AIzaSyBAW7oS6bQPFZczTHOVgdgldS64MKTmLfM",
+    authDomain: "cross-platform-labwork9-7311e.firebaseapp.com",
+    databaseURL: "https://cross-platform-labwork9-7311e-default-rtdb.firebaseio.com",
+    projectId: "cross-platform-labwork9-7311e",
+    storageBucket: "cross-platform-labwork9-7311e.firebasestorage.app",
+    messagingSenderId: "102659955597",
+    appId: "1:102659955597:web:3dbc488f5ef885a30ebbc4",
+    measurementId: "G-JK6NGE885K"
   }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

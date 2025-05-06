@@ -5,6 +5,7 @@ import { iProduct } from '../../class/interfaces/iProduct';
 import { ProductFactory } from '../../class/factory/productFactory';
 import { ProductType } from '../../class/ProductType';
 
+
 const URL = "https://api.jsonbin.io/v3/b/67fed4b58a456b79668a30c3";
 
 @Injectable({
